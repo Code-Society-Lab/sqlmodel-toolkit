@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sqlmodel-toolkit"
+dynamic = ["version"]
+description = "A toolkit for cleaner SQLModel queries with fluent API, Model base class, and engine management"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Simon Roy" },
+]
+maintainers = [
+    { name = "Code Society Lab", email = "admin@codesociety.xyz" }
+]
+keywords = ["sqlmodel", "sqlalchemy", "orm", "query", "toolkit"]
+
+dependencies = [
+    "sqlmodel>=0.0.38",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.3",
+    "pytest-cov>=4.0",
+    "mypy==1.20.0",
+    "black==26.3.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Code-Society-Lab/sqlmodel-toolkit"
+Repository = "https://github.com/Code-Society-Lab/sqlmodel-toolkit.git"
+Issues = "https://github.com/Code-Society-Lab/sqlmodel-toolkit/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sqlmodel_toolkit"]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/sqlmodel_toolkit/_version.py"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.coverage.run]
+omit = [
+    "sqlmodel_toolkit/__init__.py",
+]
