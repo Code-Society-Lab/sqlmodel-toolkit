@@ -1,9 +1,11 @@
 # model.pyi
-from typing import Any, List, Optional, Type
+
+from typing import Any, Optional, Type
 from sqlalchemy import Engine
+from sqlmodel import SQLModel
 from sqlmodel_toolkit.query import Query, ModelT
 
-class Model:
+class Model(SQLModel):
     _engine: Engine | None
 
     @classmethod
